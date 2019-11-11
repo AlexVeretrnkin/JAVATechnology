@@ -34,7 +34,7 @@ public class LinkedQueue<T> implements Queue<T> {
         if (size == 0) {
             this.tail = this.head = new Node<>(element);
         } else {
-            this.tail = new Node<>(element, this.tail);
+            this.tail = new Node<>(this.tail, element);
         }
         this.size++;
     }
@@ -49,7 +49,7 @@ public class LinkedQueue<T> implements Queue<T> {
         T value;
         if (this.head != null) {
             Node<T> selected = this.head;
-            this.head = selected.getPrevious();
+            this.head = selected.getNext();
             value = selected.unlink();
             this.size--;
         } else {
